@@ -1,5 +1,6 @@
 FLASK_APP=app
-FLASK_ENV=development SECRET_KEY=hunter2
+FLASK_ENV=development
+SECRET_KEY=hunter2
 DB_USER=calendar_this
 DB_PASS=Ku9rSyXD
 DB_NAME=calendar_this_dev
