@@ -5,7 +5,7 @@
     </head>
     <body>
         <h1>It's Working!</h1>
-        <form method="post" action="/">
+        <form method="post" action="">
             {{ form.csrf_token }}
             <p>
                 {{ form.name.label }}:
@@ -13,16 +13,26 @@
                 <br>
                 {{ form.start_date.label }}
                 {{ form.start_date() }}
-                <br>
+                <!-- <br> -->
                 {{ form.start_time.label }}
                 {{ form.start_time() }}
                 <br>
                 {{ form.end_date.label }}
                 {{ form.end_date() }}
-                <br>
+                <!-- <br> -->
                 {{ form.end_time.label }}
                 {{ form.end_time() }}
                 <br>
+                {% if form.end_date.errors %}
+                    <div>
+                      <ul class="errors">
+                        {% for error in form.end_date.errors %}
+                          <li>{{ error }}</li>
+                          {% endfor %}
+                      </ul>
+                    </div>
+                {% endif %}
+                <!-- <br> -->
                 {{ form.description.label }}
                 {{ form.description() }}
                 <br>
