@@ -4,14 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-python-dotenv = "*"
-markupsafe = "==2.0.1"
-jinja2 = "~=2.11"
-flask-wtf = "*"
 psycopg2-binary = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.9"
+python_full_version = "3.9.4"
