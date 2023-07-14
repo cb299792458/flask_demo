@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ponies</title>
+    </head>
+    <body>
+        <h1>It's Working!</h1>
+        <h1><a href="/">HOME</a></h1>
+        <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Birth Year</th>
+                <th>Breed</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for pony in ponies %}
+                <tr>
+                    <td>{{ pony.name }}</td>
+                    <td>{{ pony.birth_year }}</td>
+                    <td>{{ pony.breed }}</td>
+                    <td>
+                      <form method="POST" action="{{ url_for('delete_pony', id=pony.id) }}">
+                        <button type="submit">Delete</button>
+                      </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+          <a href="/ponies/new">Add a new pony</a>
+    </body>
+</html>
