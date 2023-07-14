@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Climate Calendar</title>
+    </head>
+    <body>
+        <h1>All Appointments</h1>
+        <h4><a href="/">Back to Today</a></h4>
+        <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Start</th>
+                <th>End</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td><a href="{{ url_for('main.show_weather',id=row[0])}}">{{ row[1] }}</a></td>
+                    <td>{{ row[2].strftime("%H:%M") }}</td>
+                    <td>{{ row[3].strftime("%H:%M") }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </body>
+</html>

@@ -1,64 +1,75 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Calendar</title>
+        <title>Climate Calendar</title>
     </head>
     <body>
-        <h1>It's Working!</h1>
-        <form method="post" action="">
-            {{ form.csrf_token }}
-            <p>
-                {{ form.name.label }}:
-                {{ form.name() }}
-                <br>
-                {{ form.start_date.label }}
-                {{ form.start_date() }}
-                <!-- <br> -->
-                {{ form.start_time.label }}
-                {{ form.start_time() }}
-                <br>
-                {{ form.end_date.label }}
-                {{ form.end_date() }}
-                <!-- <br> -->
-                {{ form.end_time.label }}
-                {{ form.end_time() }}
-                <br>
-                {% if form.end_date.errors %}
-                    <div>
-                      <ul class="errors">
-                        {% for error in form.end_date.errors %}
-                          <li>{{ error }}</li>
-                          {% endfor %}
-                      </ul>
-                    </div>
-                {% endif %}
-                <!-- <br> -->
-                {{ form.description.label }}
-                {{ form.description() }}
-                <br>
-                {{ form.private.label }}
-                {{ form.private() }}
-                <br>
-            </p>
-            <p>{{ form.submit() }}</p>
-        </form>
+
+      <h1>Climate Calendar</h1>
+      <h4><a href="/index">All Appointments</a></h4>
+
+      <h4>This Day's Appointments</h4>
+      {% if rows %}
         <table>
-            <thead>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Start</th>
+              <th>End</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for row in rows %}
               <tr>
-                <th>Name</th>
-                <th>Start</th>
-                <th>End</th>
+                  <td><a href="{{ url_for('main.show_weather',id=row[0])}}">{{ row[1] }}</a></td>
+                  <td>{{ row[2].strftime("%H:%M") }}</td>
+                  <td>{{ row[3].strftime("%H:%M") }}</td>
               </tr>
-            </thead>
-            <tbody>
-                {% for row in rows %}
-                <tr>
-                    <td>{{ row[1] }}</td>
-                    <td>{{ row[2].strftime("%H:%M") }}</td>
-                    <td>{{ row[3].strftime("%H:%M") }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-          </table>
+              {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>No Appointments for this Day</p>
+      {% endif %}
+
+      <form method="post" action="">
+        {{ form.csrf_token }}
+        <h4>New Appointment</h4>
+        <p>
+            {{ form.name.label }}:
+            {{ form.name() }}
+            <br>
+            {{ form.start_date.label }}
+            {{ form.start_date() }}
+            <!-- <br> -->
+            {{ form.start_time.label }}
+            {{ form.start_time() }}
+            <br>
+            {{ form.end_date.label }}
+            {{ form.end_date() }}
+            <!-- <br> -->
+            {{ form.end_time.label }}
+            {{ form.end_time() }}
+            <br>
+            {% if form.end_date.errors %}
+                <div>
+                  <ul class="errors">
+                    {% for error in form.end_date.errors %}
+                      <li>{{ error }}</li>
+                      {% endfor %}
+                  </ul>
+                </div>
+            {% endif %}
+            <!-- <br> -->
+            {{ form.description.label }}
+            {{ form.description() }}
+            <br>
+            {{ form.private.label }}
+            {{ form.private() }}
+            <br>
+        </p>
+        <p>{{ form.submit() }}</p>
+      </form>
+
     </body>
 </html>

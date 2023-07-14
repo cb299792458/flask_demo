@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Climate Calendar</title>
+    </head>
+    <body>
+        <h1>{{ apt[1] }}</h1>
+        <img src="{{ forecast['condition']['icon'] }}" />
+        <p>
+            Weather on {{ apt[2].strftime("%m/%d/%Y @ %H:%M") }}: <br>
+            {{ forecast['condition']['text'] }} <br>
+            Max Temp: {{ forecast['maxtemp_f'] }} °F <br>
+            Min Temp: {{ forecast['mintemp_f'] }} °F <br>
+            Avg Temp: {{ forecast['avgtemp_f'] }} °F <br>
+            Humidity: {{ forecast['avghumidity'] }} % <br>
+        </p>
+    </body>
+</html>

@@ -5,3 +5,4 @@ DB_USER=calendar_this
 DB_PASS=Ku9rSyXD
 DB_NAME=calendar_this_dev
 DB_HOST=localhost
+API_KEY=5457b215877b1e40eeed19ff9dd90419
