@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 flask = "*"
-python-dotenv = "*"
+python-dotenv = "~=0.13"
 markupsafe = "==2.0.1"
 jinja2 = "~=2.11"
 flask-wtf = "*"
