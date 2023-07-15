@@ -88,13 +88,13 @@ def show_weather(id):
             apt=curs.fetchone()
 
     date=apt[2].date()
-    print(date)
+    # print(date)
     city='New%20York'
     
     source = urllib.request.urlopen(f'https://api.weatherapi.com/v1/history.json?key=8d0e3d06e20f473f8ba232426231407&q={city}&dt={date}').read()
     list_of_data = json.loads(source)
     forecast=list_of_data['forecast']['forecastday'][0]['day']
-    print(forecast)
+    # print(forecast)
 
     if apt:
         return render_template('apt.html',apt=apt, forecast=forecast)
