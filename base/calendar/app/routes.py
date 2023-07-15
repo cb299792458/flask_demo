@@ -32,7 +32,7 @@ def index():
                 """
             )
             rows = curs.fetchall()
-            print(rows)
+            # print(rows)
     return render_template('index.html',rows=rows)
 
 @bp.route('/<int:year>/<int:month>/<int:day>', methods=['GET', 'POST'])
